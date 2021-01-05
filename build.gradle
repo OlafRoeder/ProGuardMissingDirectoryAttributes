@@ -1,3 +1,24 @@
+import proguard.gradle.ProGuardTask
+
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        //file attributes in jar-file work with ProGUard 6.2.2
+        //classpath 'net.sf.proguard:proguard-gradle:6.2.2'
+        //classpath 'net.sf.proguard:proguard-base:6.2.2'
+
+        // .. but don't with ProGuard 7.0.0
+        classpath 'com.guardsquare:proguard-gradle:7.0.0'
+        classpath 'com.guardsquare:proguard-base:7.0.0'
+
+        // ProGuard 7.0.0 needs this
+        classpath 'com.android.tools.build:gradle:3.6.3'
+    }
+}
+
 plugins {
 
     // Apply the java plugin to add support for Java
@@ -5,7 +26,6 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
-
 }
 
 group 'de.olaf-roeder'
@@ -31,4 +51,12 @@ tasks.named('jar') {
                 'Implementation-Version': project.version,
                 'Main-Class': 'application.Main')
     }
+}
+
+task proguard(type: ProGuardTask) {
+
+    configuration 'src/main/resources/application/proguard.conf'
+
+    injars 'build/libs/SSCCE_ProGuard_7.0.0_missing_file_attributes-0.1-DEVELOPER.jar'
+    outjars 'build/libs/SSCCE_ProGuard_7.0.0_missing_file_attributes-0.1-DEVELOPER-OBFUSCATED.jar'
 }
