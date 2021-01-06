@@ -12,10 +12,9 @@ buildscript {
 
         // .. but don't with ProGuard 7.0.0
         classpath 'com.guardsquare:proguard-gradle:7.0.0'
-        classpath 'com.guardsquare:proguard-base:7.0.0'
 
         // ProGuard 7.0.0 needs this
-        classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath 'com.android.tools.build:gradle:4.1.0'
     }
 }
 
