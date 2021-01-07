@@ -8,7 +8,6 @@ buildscript {
     dependencies {
         //file attributes in jar-file work with ProGUard 6.2.2
         //classpath 'net.sf.proguard:proguard-gradle:6.2.2'
-        //classpath 'net.sf.proguard:proguard-base:6.2.2'
 
         // .. but don't with ProGuard 7.0.0
         classpath 'com.guardsquare:proguard-gradle:7.0.0'
@@ -53,6 +52,8 @@ tasks.named('jar') {
 }
 
 task proguard(type: ProGuardTask) {
+
+    dependsOn 'jar'
 
     configuration 'src/main/resources/application/proguard.conf'
 
