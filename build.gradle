@@ -6,7 +6,7 @@ buildscript {
         google()
     }
     dependencies {
-        //file attributes in jar-file work with ProGUard 6.2.2
+        //file attributes in jar-file work with ProGuard 6.2.2
         //classpath 'net.sf.proguard:proguard-gradle:6.2.2'
 
         // .. but don't with ProGuard 7.0.0
